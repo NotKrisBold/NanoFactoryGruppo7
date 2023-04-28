@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31f38e44-93b3-4d33-b08c-4729f4b5f47f" name="Changes" comment=".">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/InfluxDB2Example.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/InfluxDB2Example.java" afterDir="false" />
+    <list default="true" id="31f38e44-93b3-4d33-b08c-4729f4b5f47f" name="Changes" comment="Codice di prova">
+      <change beforePath="$PROJECT_DIR$/src/main/java/UltrasonicRanger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UltrasonicRanger.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +74,7 @@
       <workItem from="1681992532872" duration="779000" />
       <workItem from="1681994941712" duration="3096000" />
       <workItem from="1682096200200" duration="5000" />
+      <workItem from="1682678287857" duration="322000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1680786337716</created>
@@ -132,7 +132,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680789177238</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Codice di prova">
+      <created>1682678406249</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1682678406249</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -152,6 +159,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit" />
     <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <MESSAGE value="Codice di prova" />
+    <option name="LAST_COMMIT_MESSAGE" value="Codice di prova" />
   </component>
 </project>

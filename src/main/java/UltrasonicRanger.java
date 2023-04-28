@@ -35,6 +35,8 @@ public class UltrasonicRanger {
 		String bucket = "rangerTest";
 		String org = "rangerTest";
 
+		//If you are running the code on raspberry the format should be: http://ipAddrOfEthPortOfYourPc:8086
+		//If you are running the code on your pc the format should be: http://localhost:8086
 		InfluxDBClient client = InfluxDBClientFactory.create("http://169.254.10.236:8086", token.toCharArray());
 
 		WriteApiBlocking writeApi = client.getWriteApiBlocking();
