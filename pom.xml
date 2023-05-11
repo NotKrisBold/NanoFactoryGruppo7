@@ -7,6 +7,18 @@
     <groupId>org.example</groupId>
     <artifactId>NanoFactoryGruppo7</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>18</source>
+                    <target>18</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
         <maven.compiler.source>19</maven.compiler.source>
@@ -14,12 +26,18 @@
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.iot.raspberry</groupId>
+            <artifactId>GrovePi-pi4j</artifactId>
+            <version>0.1.0-SNAPSHOT</version>
+        </dependency>
+
         <dependency>
             <groupId>com.influxdb</groupId>
             <artifactId>influxdb-client-java</artifactId>
             <version>6.7.0</version>
         </dependency>
     </dependencies>
-
 
 </project>
