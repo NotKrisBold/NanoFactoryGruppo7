@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteTargetsManager">
+    <option name="projectDefaultTargetUuid" value="0b3d4f09-a766-4b18-8303-5a5ac63cd6ba" />
+    <targets>
+      <target name="pi@raspberrypi-gp2:22" type="ssh/sftp" uuid="0b3d4f09-a766-4b18-8303-5a5ac63cd6ba">
+        <config>
+          <option name="projectRootOnTarget" value="/home/pi/NanoFactoryGruppo7" />
+          <option name="serverName" value="pi@raspberrypi-gp2:22 password" />
+        </config>
+        <ContributedStateBase type="JavaLanguageRuntime">
+          <config>
+            <option name="homePath" value="/usr/lib/jvm/java-8-openjdk-armhf" />
+            <option name="javaVersionString" value="8.0 " />
+          </config>
+        </ContributedStateBase>
+      </target>
+    </targets>
+  </component>
+</project>
