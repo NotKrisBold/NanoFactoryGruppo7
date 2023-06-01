@@ -16,6 +16,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class NanoFactory {
+
+    public static volatile boolean acquisitionON = true;
+
     public static void main(String[] args) throws Exception {
         Logger.getLogger("GrovePi").setLevel(Level.WARNING);
         Logger.getLogger("RaspberryPi").setLevel(Level.WARNING);
