@@ -3,16 +3,16 @@ package Progetto;
 public class Lot {
     private long startTime;
     private final int size;
-    private final long[] timeTaken;
+    private int cnt = 0; //Counter for balls arrived at the end
+    private final double[] timeTaken; //Seconds taken to each ball
     private int blue = 0;
     private int red = 0;
     private int right = 0;
     private int left = 0;
-    private int cnt = 0;
 
     public Lot(int size){
         this.size = size;
-        timeTaken = new long[size];
+        timeTaken = new double[size];
     }
 
     public void start(){
@@ -22,7 +22,7 @@ public class Lot {
     public void end(){
         if(cnt >= size)
             return;
-        timeTaken[cnt++] = System.currentTimeMillis() - startTime;
+        timeTaken[cnt++] = (double) (System.currentTimeMillis() - startTime) / 1000;
     }
 
     public void rightIncrement(){
@@ -54,12 +54,12 @@ public class Lot {
         return left;
     }
 
-    public long getAvarageTime(){
-        long sum = 0;
-        for(int i = 0; i < cnt; i++){
+    public double getAverageTime() {
+        double sum = 0;
+        for(int i = 0; i < cnt; i++) {
             sum += timeTaken[i];
         }
-        return sum / (long) cnt;
+        return sum / (double) cnt;
     }
 
     public boolean done(){

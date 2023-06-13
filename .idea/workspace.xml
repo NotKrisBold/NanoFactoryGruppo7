@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31f38e44-93b3-4d33-b08c-4729f4b5f47f" name="Changes" comment="Implementazione rilevamenti di tutti i dati necessari">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Progetto/InfluxLotPoint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Progetto/Lot.java" afterDir="false" />
+    <list default="true" id="31f38e44-93b3-4d33-b08c-4729f4b5f47f" name="Changes" comment="Implementazione del codice">
+      <change afterPath="$PROJECT_DIR$/src/main/java/InlufxLotTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/remote-targets.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/remote-targets.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/InfluxDB2Example.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Progetto/NanoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Progetto/NanoFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/UltrasonicRanger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UltrasonicRanger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Progetto/InfluxLotPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Progetto/InfluxLotPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Progetto/Lot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Progetto/Lot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UltrasonicRanger.java" beforeDir="false" />
     </list>
     <list id="325e5314-a84a-4db5-a83f-16f5ac2bbdbd" name="Changes by jonat" comment="Changes by jonat" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,7 +58,15 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.UltrasonicRanger">
+  <component name="RunManager" selected="Application.InlufxLotTest">
+    <configuration name="InlufxLotTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="InlufxLotTest" />
+      <module name="NanoFactoryGruppo7" />
+      <projectPathOnTarget name="projectPathOnTarget" value="/home/pi/NanoFactoryGruppo7" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="NanoFactory" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Progetto.NanoFactory" />
       <module name="NanoFactoryGruppo7" />
@@ -74,8 +82,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.NanoFactory" />
+      <item itemvalue="Application.InlufxLotTest" />
+      <item itemvalue="Application.UltrasonicRanger" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.InlufxLotTest" />
         <item itemvalue="Application.UltrasonicRanger" />
       </list>
     </recent_temporary>
@@ -98,6 +112,7 @@
       <workItem from="1685729916640" duration="36000" />
       <workItem from="1686395407011" duration="9620000" />
       <workItem from="1686652823178" duration="9338000" />
+      <workItem from="1686683020724" duration="2789000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1680786337716</created>
@@ -134,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680787318680</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Implementazione del codice">
+      <created>1686683053327</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1686683053327</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,7 +175,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="First commit" />
+    <MESSAGE value="Implementazione del codice" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementazione del codice" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

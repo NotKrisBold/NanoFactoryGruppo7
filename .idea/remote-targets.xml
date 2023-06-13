@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="RemoteTargetsManager">
-    <option name="projectDefaultTargetUuid" value="10dfde98-a8e9-466a-8c41-e029bf1e1a6a" />
     <targets>
       <target name="pi@raspberrypi-gp2:22" type="ssh/sftp" uuid="10dfde98-a8e9-466a-8c41-e029bf1e1a6a">
         <config>
