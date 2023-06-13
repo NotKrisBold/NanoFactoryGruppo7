@@ -4,20 +4,24 @@ import org.iot.raspberry.grovepi.GrovePi;
 import org.iot.raspberry.grovepi.pi4j.GrovePi4J;
 import org.iot.raspberry.grovepi.sensors.analog.GroveRotarySensor;
 import org.iot.raspberry.grovepi.sensors.data.GroveRotaryValue;
-import org.iot.raspberry.grovepi.sensors.digital.GroveBuzzer;
 import org.iot.raspberry.grovepi.sensors.digital.GroveLed;
 import org.iot.raspberry.grovepi.sensors.digital.GroveUltrasonicRanger;
 import org.iot.raspberry.grovepi.sensors.i2c.GroveRgbLcd;
 import org.iot.raspberry.grovepi.sensors.synch.SensorMonitor;
 
-import java.io.IOException;
-import java.util.Timer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class NanoFactory {
+enum Ball_Type {
+    RED,
+    BLUE
+}
 
-    public static volatile boolean acquisitionON = true;
+public class NanoFactory {
+    public static final int LOT_SIZE = 6;
+
+    public static boolean started = false;
+    public static boolean acquisitionON = false;
 
     public static void main(String[] args) throws Exception {
         Logger.getLogger("GrovePi").setLevel(Level.WARNING);
@@ -27,87 +31,128 @@ public class NanoFactory {
 
         // Rotatory
         GroveRotarySensor rotatorySensorLift = new GroveRotarySensor(grovePi, 1);
-        GroveRotarySensor rotatorySensorStart = new GroveRotarySensor(grovePi, 2);
+
         // Led
         GroveLed entry = new GroveLed(grovePi, 7);
         GroveLed exit = new GroveLed(grovePi, 8);
 
         // UltrasonicRanger
-        GroveUltrasonicRanger ultrasonicRangerFirst = new GroveUltrasonicRanger(grovePi, 2);
-        GroveUltrasonicRanger ultrasonicRangerSecond = new GroveUltrasonicRanger(grovePi, 3);
+        GroveUltrasonicRanger exitRangerLeft = new GroveUltrasonicRanger(grovePi, 2);
+        GroveUltrasonicRanger exitRangerRight = new GroveUltrasonicRanger(grovePi, 3);
+        GroveUltrasonicRanger entryRanger = new GroveUltrasonicRanger(grovePi, 4);
+
         // LCD
         GroveRgbLcd lcd1 = grovePi.getLCD();
 
         // SensorMonitor
-        SensorMonitor<GroveRotaryValue> groveRotaryLiftSensorMonitor = new SensorMonitor<>(rotatorySensorLift, 10);
-        SensorMonitor<GroveRotaryValue> groveRotaryStartSensorMonitor = new SensorMonitor<>(rotatorySensorStart, 10);
-        SensorMonitor<Double> ultrasonicRangerFirstMonitor = new SensorMonitor<>(ultrasonicRangerFirst, 10);
-        SensorMonitor<Double> ultrasonicRangerSecondMonitor = new SensorMonitor<>(ultrasonicRangerSecond, 10);
+        SensorMonitor<GroveRotaryValue> groveRotaryLiftSensorMonitor = new SensorMonitor<>(rotatorySensorLift, 1);
+        SensorMonitor<Double> exitRangerLeftMonitor = new SensorMonitor<>(exitRangerLeft, 1);
+        SensorMonitor<Double> exitRangerRightMonitor = new SensorMonitor<>(exitRangerRight, 1);
+        SensorMonitor<Double> entryRangerMonitor = new SensorMonitor<>(entryRanger, 1);
 
-        groveRotaryStartSensorMonitor.start();
         groveRotaryLiftSensorMonitor.start();
-        ultrasonicRangerFirstMonitor.start();
-        ultrasonicRangerSecondMonitor.start();
+        exitRangerLeftMonitor.start();
+        exitRangerRightMonitor.start();
+        entryRangerMonitor.start();
         Thread.sleep(1000); //Sleep to allow monitor to start
-        // Init
-        GroveRotaryValue startPrev = groveRotaryStartSensorMonitor.getValue();
-        GroveRotaryValue liftPrev = groveRotaryLiftSensorMonitor.getValue();
-        long startTime = System.currentTimeMillis(); // Initialize startTime
-        while (true){
-            if (groveRotaryLiftSensorMonitor.isValid()) {
-                GroveRotaryValue tmp = groveRotaryLiftSensorMonitor.getValue();
-                long endTime = System.currentTimeMillis();
-                // Calculate the time elapsed since the previous reading
-                long elapsedTime = (endTime - startTime) * 1000;
-                double delta = Math.abs(tmp.getDegrees() - liftPrev.getDegrees());
-                if(delta >= 0.3) { //Errore di misura del sensore
-                    // Calculate the rotation speed in degrees per second
-                    double speed = delta / elapsedTime;
-                    System.out.println("Velocity: " + speed);
-                    liftPrev = tmp;
-                    startTime = System.currentTimeMillis();
-                }
-                else
-                    System.out.println("Lift not moving");
-            }
 
-            if (groveRotaryStartSensorMonitor.isValid()) {
-                GroveRotaryValue tmp = groveRotaryStartSensorMonitor.getValue();
-                // Se il valore attuale è diverso dal precedente le palline sono passate
-                if (tmp.getDegrees() - startPrev.getDegrees() > 0.3){
-                    System.out.println("Palline passate");
-                    try {
-                        // Led lampeggia
+        while (true) {
+            GroveRotaryValue liftPrev = groveRotaryLiftSensorMonitor.getValue();
+            long liftStartTime = System.currentTimeMillis(); // Initialize startTime
+            double entryRangerInitial = entryRangerMonitor.getValue();
+            double exitRangerRightInitial = exitRangerLeftMonitor.getValue();
+            double exitRangerLeftInitial = exitRangerRightMonitor.getValue();
+
+            Ball_Type prevLiftSpeed = Ball_Type.RED;
+            Ball_Type liftSpeed = Ball_Type.RED;
+
+            long blueSpeedTimeStart = 0;
+            long totalBlueTime = 0;
+
+            int blue = 0;
+            int red = 0;
+            Lot currentLot = new Lot(LOT_SIZE);
+
+            while (!started) {
+                if (entryRangerMonitor.isValid()) {
+                    if (entryRangerInitial > entryRangerMonitor.getValue()) {
+                        currentLot.start();
+                        started = true;
                         entry.set(true);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
+                        acquisitionON = true;
                     }
-                    startPrev = groveRotaryStartSensorMonitor.getValue();
                 }
-                try {
-                    // Led spento
-                    entry.set(false);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-        }
-
-            if (ultrasonicRangerFirstMonitor.isValid()) {
-                if(ultrasonicRangerFirstMonitor.getValue() < 10) {
-                    System.out.println(ultrasonicRangerFirstMonitor.getValue() + "cm");
-                    exit.set(true);
-                }
+                Thread.sleep(50);
             }
 
-            if (ultrasonicRangerSecondMonitor.isValid()) {
-                if(ultrasonicRangerSecondMonitor.getValue() < 10) {
-                    System.out.println(ultrasonicRangerSecondMonitor.getValue() + " cm");
-                    exit.set(true);
-                }
-            }
+            while (acquisitionON) {
+                if (groveRotaryLiftSensorMonitor.isValid()) {
+                    GroveRotaryValue tmp = groveRotaryLiftSensorMonitor.getValue();
+                    long liftEndTime = System.currentTimeMillis();
+                    // Calculate the time elapsed since the previous reading
+                    long elapsedTime = (liftEndTime - liftStartTime) * 1000;
+                    double delta = Math.abs(tmp.getDegrees() - liftPrev.getDegrees());
+                    if (delta >= 0.3) { //Errore di misura del sensore
+                        // Calculate the rotation speed in degrees per second
+                        double speed = delta / (double) elapsedTime;
+                        if (speed * 10000 > 3) {
+                            liftSpeed = Ball_Type.BLUE;
+                        } else
+                            liftSpeed = Ball_Type.RED;
 
+                        if (prevLiftSpeed.equals(Ball_Type.RED) && liftSpeed.equals(Ball_Type.BLUE)) {
+                            blueSpeedTimeStart = System.currentTimeMillis();
+                            blue++;
+                        }
+                        else if(prevLiftSpeed.equals(Ball_Type.BLUE) && liftSpeed.equals(Ball_Type.RED)) {
+                            blue += Math.round(System.currentTimeMillis() - blueSpeedTimeStart / 3.7);
+                            blueSpeedTimeStart = 0;
+                            red++;
+                        }
+
+                        liftPrev = tmp;
+                        liftStartTime = System.currentTimeMillis();
+                        prevLiftSpeed = liftSpeed;
+                    } else
+                        lcd1.setText("Not moving");
+                }
+
+                if (exitRangerLeftMonitor.isValid()) {
+                    if (exitRangerLeftInitial > exitRangerLeftMonitor.getValue()) {
+                        exit.set(true);
+                        currentLot.end();
+                        currentLot.leftIncrement();
+                    }
+                }
+
+                if (exitRangerRightMonitor.isValid()) {
+                    if (exitRangerRightInitial > exitRangerRightMonitor.getValue()) {
+                        exit.set(true);
+                        currentLot.end();
+                        currentLot.rightIncrement();
+                    }
+                }
+
+                if(currentLot.done()) {
+                    if(liftSpeed.equals(Ball_Type.BLUE)){
+                        blue += Math.round(System.currentTimeMillis() - blueSpeedTimeStart / 3.7);
+                    }
+                    if(blue > LOT_SIZE){
+                        blue = LOT_SIZE;
+                    }
+                    if(LOT_SIZE - blue < red){
+                        blue -= (blue - (LOT_SIZE - red));
+                    }
+                    currentLot.setBalls(blue);
+                    InfluxLotPoint.pushLot(currentLot);
+                    acquisitionON = false;
+                }
+
+                Thread.sleep(50);
+                exit.set(false);
+            }
+            entry.set(false);
             Thread.sleep(50);
-            exit.set(false);
         }
     }
 }

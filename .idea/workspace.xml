@@ -4,16 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31f38e44-93b3-4d33-b08c-4729f4b5f47f" name="Changes" comment="Codice di prova">
-      <change afterPath="$PROJECT_DIR$/.idea/remote-targets.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="31f38e44-93b3-4d33-b08c-4729f4b5f47f" name="Changes" comment="Implementazione rilevamenti di tutti i dati necessari">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Progetto/InfluxLotPoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Progetto/Lot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/remote-targets.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/remote-targets.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/InfluxDB2Example.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Progetto/NanoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Progetto/NanoFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UltrasonicRanger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UltrasonicRanger.java" afterDir="false" />
     </list>
-    <list id="325e5314-a84a-4db5-a83f-16f5ac2bbdbd" name="Changes by jonat" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Progetto/NanoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Progetto/NanoFactory.java" afterDir="false" />
-    </list>
+    <list id="325e5314-a84a-4db5-a83f-16f5ac2bbdbd" name="Changes by jonat" comment="Changes by jonat" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,22 +28,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/main/java/Progetto/NanoFactory.java">
-      <ranges>
-        <range start1="12" end1="12" start2="12" end2="14" changelist="31f38e44-93b3-4d33-b08c-4729f4b5f47f" />
-        <range start1="16" end1="16" start2="18" end2="21" changelist="325e5314-a84a-4db5-a83f-16f5ac2bbdbd" />
-        <range start1="17" end1="18" start2="22" end2="22" changelist="31f38e44-93b3-4d33-b08c-4729f4b5f47f" />
-        <range start1="21" end1="22" start2="25" end2="26" changelist="31f38e44-93b3-4d33-b08c-4729f4b5f47f" />
-        <range start1="23" end1="36" start2="27" end2="39" changelist="31f38e44-93b3-4d33-b08c-4729f4b5f47f" />
-        <range start1="37" end1="41" start2="40" end2="45" changelist="31f38e44-93b3-4d33-b08c-4729f4b5f47f" />
-        <range start1="42" end1="43" start2="46" end2="93" changelist="31f38e44-93b3-4d33-b08c-4729f4b5f47f" />
-        <range start1="44" end1="44" start2="94" end2="106" changelist="31f38e44-93b3-4d33-b08c-4729f4b5f47f" />
-        <range start1="46" end1="48" start2="108" end2="110" changelist="31f38e44-93b3-4d33-b08c-4729f4b5f47f" />
-        <range start1="51" end1="52" start2="113" end2="113" changelist="31f38e44-93b3-4d33-b08c-4729f4b5f47f" />
-      </ranges>
-    </file>
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -61,7 +46,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/jonat/OneDrive/Desktop/NanoFactoryGruppo7&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/krist/IdeaProjects/ProjectTemplate&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -73,36 +58,25 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.Progetto.NanoFactory">
-    <configuration name="InfluxDB2Example" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="InfluxDB2Example" />
-      <module name="NanoFactoryGruppo7" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Progetto.NanoFactory" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.UltrasonicRanger">
+    <configuration name="NanoFactory" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Progetto.NanoFactory" />
       <module name="NanoFactoryGruppo7" />
       <target name="pi@raspberrypi-gp2:22" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Progetto.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Application.InfluxDB2Example" />
-      <item itemvalue="Application.Progetto.NanoFactory" />
-    </list>
+    <configuration name="UltrasonicRanger" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="UltrasonicRanger" />
+      <module name="NanoFactoryGruppo7" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Progetto.NanoFactory" />
-        <item itemvalue="Application.InfluxDB2Example" />
+        <item itemvalue="Application.UltrasonicRanger" />
       </list>
     </recent_temporary>
   </component>
@@ -120,6 +94,10 @@
       <workItem from="1685092102449" duration="812000" />
       <workItem from="1685530050210" duration="5326000" />
       <workItem from="1685615351024" duration="595000" />
+      <workItem from="1685626104493" duration="819000" />
+      <workItem from="1685729916640" duration="36000" />
+      <workItem from="1686395407011" duration="9620000" />
+      <workItem from="1686652823178" duration="9338000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1680786337716</created>
