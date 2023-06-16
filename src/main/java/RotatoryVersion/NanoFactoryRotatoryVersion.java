@@ -65,7 +65,6 @@ public class NanoFactoryRotatoryVersion {
             Ball_Type liftSpeed = Ball_Type.RED;
 
             long blueSpeedTimeStart = 0;
-            long totalBlueTime = 0;
 
             int blue = 0;
             int red = 0;
