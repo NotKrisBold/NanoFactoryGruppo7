@@ -4,14 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31f38e44-93b3-4d33-b08c-4729f4b5f47f" name="Changes" comment="Implementazione del codice">
-      <change afterPath="$PROJECT_DIR$/src/main/java/InlufxLotTest.java" afterDir="false" />
+    <list default="true" id="31f38e44-93b3-4d33-b08c-4729f4b5f47f" name="Changes" comment="Test di influx cond InfluxLotTest">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/NormalVersion/NanoFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Utilities/Ball_Type.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Utilities/InfluxLotPoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/PushTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/RotaryTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/remote-targets.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/remote-targets.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Progetto/InfluxLotPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Progetto/InfluxLotPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Progetto/Lot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Progetto/Lot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/UltrasonicRanger.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/InlufxLotTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Progetto/InfluxLotPoint.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Progetto/Lot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/Lot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Progetto/NanoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RotatoryVersion/NanoFactoryRotatoryVersion.java" afterDir="false" />
     </list>
     <list id="325e5314-a84a-4db5-a83f-16f5ac2bbdbd" name="Changes by jonat" comment="Changes by jonat" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,28 +45,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/krist/IdeaProjects/ProjectTemplate&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/krist/IdeaProjects/NanoFactoryGruppo7/src/main/java/Progetto",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
-  <component name="RunManager" selected="Application.InlufxLotTest">
-    <configuration name="InlufxLotTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="InlufxLotTest" />
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\krist\IdeaProjects\NanoFactoryGruppo7\src\main\java\Progetto" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\krist\IdeaProjects\NanoFactoryGruppo7\src\main\java" />
+      <recent name="C:\Users\krist\IdeaProjects\NanoFactoryGruppo7\src\main" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="RotatoryVersion" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.NanoFactory">
+    <configuration name="Lot.InlufxLotTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Lot.InlufxLotTest" />
       <module name="NanoFactoryGruppo7" />
       <projectPathOnTarget name="projectPathOnTarget" value="/home/pi/NanoFactoryGruppo7" />
       <method v="2">
@@ -68,9 +89,25 @@
       </method>
     </configuration>
     <configuration name="NanoFactory" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Progetto.NanoFactory" />
+      <option name="MAIN_CLASS_NAME" value="NormalVersion.NanoFactory" />
       <module name="NanoFactoryGruppo7" />
       <target name="pi@raspberrypi-gp2:22" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PushTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="PushTest" />
+      <module name="NanoFactoryGruppo7" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Raspberry" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="RotaryTest" />
+      <module name="NanoFactoryGruppo7" />
+      <projectPathOnTarget name="projectPathOnTarget" value="/home/pi/NanoFactoryGruppo7" />
+      <target name="@@@LOCAL@@@" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -84,12 +121,15 @@
     </configuration>
     <list>
       <item itemvalue="Application.NanoFactory" />
-      <item itemvalue="Application.InlufxLotTest" />
+      <item itemvalue="Application.Raspberry" />
+      <item itemvalue="Application.PushTest" />
+      <item itemvalue="Application.Lot.InlufxLotTest" />
       <item itemvalue="Application.UltrasonicRanger" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.InlufxLotTest" />
+        <item itemvalue="Application.PushTest" />
+        <item itemvalue="Application.Lot.InlufxLotTest" />
         <item itemvalue="Application.UltrasonicRanger" />
       </list>
     </recent_temporary>
@@ -112,7 +152,9 @@
       <workItem from="1685729916640" duration="36000" />
       <workItem from="1686395407011" duration="9620000" />
       <workItem from="1686652823178" duration="9338000" />
-      <workItem from="1686683020724" duration="2789000" />
+      <workItem from="1686683020724" duration="3184000" />
+      <workItem from="1686824709539" duration="3828000" />
+      <workItem from="1686910956148" duration="8516000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1680786337716</created>
@@ -156,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686683053327</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Test di influx cond InfluxLotTest">
+      <created>1686688508959</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1686688508959</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,7 +225,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit" />
     <MESSAGE value="Implementazione del codice" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementazione del codice" />
+    <MESSAGE value="Test di influx cond InfluxLotTest" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test di influx cond InfluxLotTest" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

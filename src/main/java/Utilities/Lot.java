@@ -1,6 +1,9 @@
-package Progetto;
+package Utilities;
+
+import java.time.LocalDateTime;
 
 public class Lot {
+    private LocalDateTime lotCreation;
     private long startTime;
     private final int size;
     private int cnt = 0; //Counter for balls arrived at the end
@@ -17,6 +20,7 @@ public class Lot {
 
     public void start(){
         startTime = System.currentTimeMillis();
+        lotCreation = LocalDateTime.now();
     }
 
     public void end(){
@@ -38,6 +42,18 @@ public class Lot {
         red = size - blue;
     }
 
+    public double getTotalTimeTaken(){
+        double sum = 0;
+        for (int i = 0; i < cnt; i++) {
+            sum += timeTaken[i];
+        }
+        return sum;
+    }
+
+    public LocalDateTime getLotCreation() {
+        return lotCreation;
+    }
+
     public int getBlueBalls() {
         return blue;
     }
@@ -55,11 +71,7 @@ public class Lot {
     }
 
     public double getAverageTime() {
-        double sum = 0;
-        for(int i = 0; i < cnt; i++) {
-            sum += timeTaken[i];
-        }
-        return sum / (double) cnt;
+        return getTotalTimeTaken() / (double) cnt;
     }
 
     public boolean done(){

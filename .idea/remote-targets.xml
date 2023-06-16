@@ -13,6 +13,17 @@
           </config>
         </ContributedStateBase>
       </target>
+      <target name="raspberrypi-gp2" type="ssh/sftp" uuid="47ed52c8-05be-4364-8603-b09c4c77d537">
+        <config>
+          <option name="projectRootOnTarget" value="/home/pi/NanoFactoryGruppo7" />
+          <option name="serverName" value="raspberrypi-gp1" />
+        </config>
+        <ContributedStateBase type="JavaLanguageRuntime">
+          <config>
+            <option name="homePath" value="/usr/lib/jvm/java-1.8.0-openjdk-armhf" />
+          </config>
+        </ContributedStateBase>
+      </target>
     </targets>
   </component>
 </project>

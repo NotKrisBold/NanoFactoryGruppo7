@@ -1,9 +1,9 @@
-package Progetto;
+package NormalVersion;
 
+import Utilities.InfluxLotPoint;
+import Utilities.Lot;
 import org.iot.raspberry.grovepi.GrovePi;
 import org.iot.raspberry.grovepi.pi4j.GrovePi4J;
-import org.iot.raspberry.grovepi.sensors.analog.GroveRotarySensor;
-import org.iot.raspberry.grovepi.sensors.data.GroveRotaryValue;
 import org.iot.raspberry.grovepi.sensors.digital.GroveLed;
 import org.iot.raspberry.grovepi.sensors.digital.GroveUltrasonicRanger;
 import org.iot.raspberry.grovepi.sensors.i2c.GroveRgbLcd;
@@ -11,11 +11,6 @@ import org.iot.raspberry.grovepi.sensors.synch.SensorMonitor;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-enum Ball_Type {
-    RED,
-    BLUE
-}
 
 public class NanoFactory {
     public static final int LOT_SIZE = 6;
@@ -28,9 +23,6 @@ public class NanoFactory {
         Logger.getLogger("RaspberryPi").setLevel(Level.WARNING);
 
         GrovePi grovePi = new GrovePi4J();
-
-        // Rotatory
-        GroveRotarySensor rotatorySensorLift = new GroveRotarySensor(grovePi, 1);
 
         // Led
         GroveLed entry = new GroveLed(grovePi, 7);
@@ -45,34 +37,23 @@ public class NanoFactory {
         GroveRgbLcd lcd1 = grovePi.getLCD();
 
         // SensorMonitor
-        SensorMonitor<GroveRotaryValue> groveRotaryLiftSensorMonitor = new SensorMonitor<>(rotatorySensorLift, 1);
         SensorMonitor<Double> exitRangerLeftMonitor = new SensorMonitor<>(exitRangerLeft, 1);
         SensorMonitor<Double> exitRangerRightMonitor = new SensorMonitor<>(exitRangerRight, 1);
         SensorMonitor<Double> entryRangerMonitor = new SensorMonitor<>(entryRanger, 1);
 
-        groveRotaryLiftSensorMonitor.start();
         exitRangerLeftMonitor.start();
         exitRangerRightMonitor.start();
         entryRangerMonitor.start();
         Thread.sleep(1000); //Sleep to allow monitor to start
 
         while (true) {
-            GroveRotaryValue liftPrev = groveRotaryLiftSensorMonitor.getValue();
-            long liftStartTime = System.currentTimeMillis(); // Initialize startTime
             double entryRangerInitial = entryRangerMonitor.getValue();
             double exitRangerRightInitial = exitRangerLeftMonitor.getValue();
             double exitRangerLeftInitial = exitRangerRightMonitor.getValue();
 
-            Ball_Type prevLiftSpeed = Ball_Type.RED;
-            Ball_Type liftSpeed = Ball_Type.RED;
-
-            long blueSpeedTimeStart = 0;
-            long totalBlueTime = 0;
-
-            int blue = 0;
-            int red = 0;
             Lot currentLot = new Lot(LOT_SIZE);
 
+            //Aspettiamo che le palline passino dal sensore di start
             while (!started) {
                 if (entryRangerMonitor.isValid()) {
                     if (entryRangerInitial > entryRangerMonitor.getValue()) {
@@ -85,38 +66,8 @@ public class NanoFactory {
                 Thread.sleep(50);
             }
 
+            //Palline passate
             while (acquisitionON) {
-                if (groveRotaryLiftSensorMonitor.isValid()) {
-                    GroveRotaryValue tmp = groveRotaryLiftSensorMonitor.getValue();
-                    long liftEndTime = System.currentTimeMillis();
-                    // Calculate the time elapsed since the previous reading
-                    long elapsedTime = (liftEndTime - liftStartTime) * 1000;
-                    double delta = Math.abs(tmp.getDegrees() - liftPrev.getDegrees());
-                    if (delta >= 0.3) { //Errore di misura del sensore
-                        // Calculate the rotation speed in degrees per second
-                        double speed = delta / (double) elapsedTime;
-                        if (speed * 10000 > 3) {
-                            liftSpeed = Ball_Type.BLUE;
-                        } else
-                            liftSpeed = Ball_Type.RED;
-
-                        if (prevLiftSpeed.equals(Ball_Type.RED) && liftSpeed.equals(Ball_Type.BLUE)) {
-                            blueSpeedTimeStart = System.currentTimeMillis();
-                            blue++;
-                        }
-                        else if(prevLiftSpeed.equals(Ball_Type.BLUE) && liftSpeed.equals(Ball_Type.RED)) {
-                            blue += Math.round(System.currentTimeMillis() - blueSpeedTimeStart / 3.7);
-                            blueSpeedTimeStart = 0;
-                            red++;
-                        }
-
-                        liftPrev = tmp;
-                        liftStartTime = System.currentTimeMillis();
-                        prevLiftSpeed = liftSpeed;
-                    } else
-                        lcd1.setText("Not moving");
-                }
-
                 if (exitRangerLeftMonitor.isValid()) {
                     if (exitRangerLeftInitial > exitRangerLeftMonitor.getValue()) {
                         exit.set(true);
@@ -133,19 +84,12 @@ public class NanoFactory {
                     }
                 }
 
+                lcd1.setText("R: " + currentLot.getRightBalls() + "\nL: " + currentLot.getLeftBalls());
+
                 if(currentLot.done()) {
-                    if(liftSpeed.equals(Ball_Type.BLUE)){
-                        blue += Math.round(System.currentTimeMillis() - blueSpeedTimeStart / 3.7);
-                    }
-                    if(blue > LOT_SIZE){
-                        blue = LOT_SIZE;
-                    }
-                    if(LOT_SIZE - blue < red){
-                        blue -= (blue - (LOT_SIZE - red));
-                    }
-                    currentLot.setBalls(blue);
-                    InfluxLotPoint.pushLot(currentLot);
+                    InfluxLotPoint.pushLotNormalVersion(currentLot);
                     acquisitionON = false;
+                    started = false;
                 }
 
                 Thread.sleep(50);
