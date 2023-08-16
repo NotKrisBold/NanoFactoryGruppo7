@@ -74,9 +74,9 @@ public class NanoFactory {
         Thread.sleep(1000);
 
         while (true) {
-            if(!started){
+            if (!started) {
                 Lot lot = activeLots.poll();
-                if(lot != null) {
+                if (lot != null) {
                     currentLot = lot;
                     acquisitionOn = true;
                     started = true;
