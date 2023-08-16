@@ -23,17 +23,19 @@ public class Lot {
         lotCreation = LocalDateTime.now();
     }
 
-    public void end(){
+    private void ballAtEnd(){
         if(cnt >= size)
             return;
         timeTaken[cnt++] = (double) (System.currentTimeMillis() - startTime) / 1000;
     }
 
     public void rightIncrement(){
+        ballAtEnd();
         right++;
     }
 
     public void leftIncrement(){
+        ballAtEnd();
         left++;
     }
 

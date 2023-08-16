@@ -1,4 +1,4 @@
-package RotatoryVersion;
+package VecchieVersioni.RotatoryVersion;
 
 import Utilities.Ball_Type;
 import Utilities.InfluxLotPoint;

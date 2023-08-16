@@ -1,4 +1,4 @@
-package NormalVersion;
+package OnlyButtonsVersion;
 
 import Utilities.InfluxLotPoint;
 import Utilities.Lot;
@@ -52,15 +52,40 @@ public class NanoFactory {
                 activeLots.add(new Lot(LOT_SIZE));
             }
         });
+        GroveButton leftButton = new GroveButton(grovePi, 1);
+        entryButton.setButtonListener(new GroveButtonListener() {
+            @Override
+            public void onRelease() {
 
-        //LightSensors
-        GroveLightSensor left = new GroveLightSensor(grovePi, 2);
-        GroveLightSensor right = new GroveLightSensor(grovePi, 3);
+            }
 
-        //Monitors
-        SensorMonitor<Double> leftMonitor = new SensorMonitor<>(left, 10);
-        SensorMonitor<Double> rightMonitor = new SensorMonitor<>(right, 10);
+            @Override
+            public void onPress() {
 
+            }
+
+            @Override
+            public void onClick() {
+                activeLots.add(new Lot(LOT_SIZE));
+            }
+        });
+        GroveButton rightButton = new GroveButton(grovePi, 1);
+        entryButton.setButtonListener(new GroveButtonListener() {
+            @Override
+            public void onRelease() {
+
+            }
+
+            @Override
+            public void onPress() {
+
+            }
+
+            @Override
+            public void onClick() {
+                activeLots.add(new Lot(LOT_SIZE));
+            }
+        });
 
         // LCD
         GroveRgbLcd lcd1 = grovePi.getLCD();
@@ -69,8 +94,6 @@ public class NanoFactory {
 
         Lot currentLot = new Lot(LOT_SIZE);
 
-        leftMonitor.start();
-        rightMonitor.start();
         Thread.sleep(1000);
 
         while (true) {

@@ -1,4 +1,4 @@
-package LocalSimulation;
+package VecchieVersioni.LocalSimulation;
 
 import com.influxdb.client.InfluxDBClient;
 import com.influxdb.client.InfluxDBClientFactory;
@@ -19,39 +19,53 @@ public class NanoFactory {
         InfluxDBClient client = InfluxDBClientFactory.create("http://localhost:8086", token.toCharArray());
 
         for (int i = 0; i < 200; i++) {
+            System.out.println("Operatore sta caricando il lotto");
             Thread.sleep((long) (1000 + (Math.random() * (9000))));
+            System.out.println("Lotto caricato");
+
             LocalDateTime start = LocalDateTime.now().minusHours(2);
             ZonedDateTime zonedDateTime = start.atZone(ZoneId.of("UTC"));
+
+            System.out.println("Palline al tornello");
             double waitTime = 1000 + (Math.random() * (21000));
             Thread.sleep((long) waitTime);
+            System.out.println("Palline passate");
+
             Boolean[] balls = new Boolean[LOT_SIZE];
             double totalTime = waitTime / 1000;
             int redBalls = 0;
             int blueBalls = 0;
             for (int j = 0; j < LOT_SIZE; j++) {
                 balls[j] = new Random().nextBoolean(); //True = blue, False = red
-                if(balls[j])
+                if (balls[j]) {
                     blueBalls++;
-                else
+                    System.out.println("Pallina blu sul lift");
+                } else {
                     redBalls++;
+                    System.out.println("Pallina rossa sul lift");
+                }
+
                 Boolean previousSpeed;
                 if (j == 0)
                     previousSpeed = false;
                 else
                     previousSpeed = balls[j - 1];
 
+                double time;
                 if (previousSpeed) {
                     if (balls[j])
-                        totalTime += 2 + Math.random();
+                        time = 2 + Math.random();
                     else
-                        totalTime += 6.5 + Math.random() * 3;
+                        time = 6.5 + Math.random() * 3;
                 } else if (balls[j])
-                    totalTime += 4 + Math.random() * 2;
+                    time = 4 + Math.random() * 2;
                 else
-                    totalTime += 8.8 + Math.random() * 4.4;
-                totalTime += j;
-                System.out.println(totalTime);
+                    time = 8.8 + Math.random() * 4.4;
+                totalTime += j + time;
+                Thread.sleep((long)(time * 1000));
+                System.out.println("Pallina arrivata alla fine, tempo impiegato: " + time);
             }
+
             int right = 0;
             int left = 0;
             for (int j = 0; j < LOT_SIZE; j++) {
@@ -60,6 +74,8 @@ public class NanoFactory {
                 else
                     left++;
             }
+
+            System.out.println("Tutte le palline sono arrivate alla fine, tempo totale del lotto: " + totalTime);
 
             WriteApiBlocking writeApi = client.getWriteApiBlocking();
 

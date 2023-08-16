@@ -16,10 +16,8 @@ public class InfluxLotPoint {
     private static final String org = "NanoFactory";
     private static final InfluxDBClient client = InfluxDBClientFactory.create("http://169.254.10.236:8086", token.toCharArray());
 
-    public static void pushLotNormalVersion(Lot lot) throws InterruptedException {
+    public static void pushLotNormalVersion(Lot lot){
         final String bucket = "NanoFactoryNV";
-        LocalDateTime start =lot.getLotCreation().minusHours(2);
-        ZonedDateTime zonedDateTime = start.atZone(ZoneId.of("UTC"));
 
         WriteApiBlocking writeApi = client.getWriteApiBlocking();
 
@@ -28,16 +26,13 @@ public class InfluxLotPoint {
                 .addField("avarageTime", lot.getAverageTime())
                 .addField("leftBalls", lot.getLeftBalls())
                 .addField("rightBalls", lot.getRightBalls())
-                .time(zonedDateTime.toInstant(), WritePrecision.NS);
+                .time(Instant.now(), WritePrecision.NS);
         writeApi.writePoint(bucket, org, point);
     }
 
     public static void pushLotRotatoryVersion(Lot lot) {
         final String bucket = "NanoFactoryRS";
         WriteApiBlocking writeApi = client.getWriteApiBlocking();
-
-        LocalDateTime start =lot.getLotCreation().minusHours(2);
-        ZonedDateTime zonedDateTime = start.atZone(ZoneId.of("UTC"));
 
         Point point = Point.measurement("Lot")
                 .addField("totalTimeTaken", lot.getTotalTimeTaken())
@@ -46,7 +41,7 @@ public class InfluxLotPoint {
                 .addField("redBalls", lot.getRedBalls())
                 .addField("leftBalls", lot.getLeftBalls())
                 .addField("rightBalls", lot.getRightBalls())
-                .time(zonedDateTime.toInstant(), WritePrecision.NS);
+                .time(Instant.now(), WritePrecision.NS);
         writeApi.writePoint(bucket, org, point);
     }
 }

@@ -4,11 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31f38e44-93b3-4d33-b08c-4729f4b5f47f" name="Changes" comment="cambiamenti geenrali">
-      <change afterPath="$PROJECT_DIR$/src/main/java/LocalSimulation/NanoFactory.java" afterDir="false" />
+    <list default="true" id="31f38e44-93b3-4d33-b08c-4729f4b5f47f" name="Changes" comment="cambiamenti">
+      <change afterPath="$PROJECT_DIR$/src/main/java/OnlyButtonsVersion/NanoFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/VecchieVersioni/NormalVersion/NanoFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/VecchieVersioni/ThreadsVersion/NanoFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/VecchieVersioni/ThreadsVersion/RangerWorker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/remote-targets.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/remote-targets.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/RotatoryVersion/NanoFactoryRotatoryVersion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RotatoryVersion/NanoFactoryRotatoryVersion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/Progetto_Industry_4.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Report/Progetto_Industry_4.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/~$ogetto_Industry_4.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LocalSimulation/NanoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/VecchieVersioni/LocalSimulation/NanoFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/NormalVersion/NanoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/NormalVersion/NanoFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/RotatoryVersion/NanoFactoryRotatoryVersion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/VecchieVersioni/RotatoryVersion/NanoFactoryRotatoryVersion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/InfluxLotPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/InfluxLotPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/Lot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/Lot.java" afterDir="false" />
     </list>
     <list id="325e5314-a84a-4db5-a83f-16f5ac2bbdbd" name="Changes by jonat" comment="Changes by jonat" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,19 +40,22 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2O3PUYQee2PNxR7C8atHrAI14bx" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/krist/IdeaProjects/NanoFactoryGruppo7/src/main/java/Progetto&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/krist/IdeaProjects&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -71,7 +83,7 @@
       <recent name="RotatoryVersion" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.LocalSimulation.NanoFactory">
+  <component name="RunManager" selected="Application.NormalVersion.NanoFactory">
     <configuration name="LocalSimulation.NanoFactory" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="LocalSimulation.NanoFactory" />
       <module name="NanoFactoryGruppo7" />
@@ -85,25 +97,51 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Lot.InlufxLotTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Lot.InlufxLotTest" />
-      <module name="NanoFactoryGruppo7" />
-      <projectPathOnTarget name="projectPathOnTarget" value="/home/pi/NanoFactoryGruppo7" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="NanoFactory" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="NormalVersion.NanoFactory" />
       <module name="NanoFactoryGruppo7" />
-      <target name="pi@raspberrypi-gp2:22" />
+      <target name="raspberrypi-gp5" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PushTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="PushTest" />
+    <configuration name="NanoFactoryRotatoryVersion" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="RotatoryVersion.NanoFactoryRotatoryVersion" />
       <module name="NanoFactoryGruppo7" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="RotatoryVersion.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NormalVersion.NanoFactory" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="NormalVersion.NanoFactory" />
+      <module name="NanoFactoryGruppo7" />
+      <target name="raspberrypi-gp5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="NormalVersion.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Rangers" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TestSensori.Rangers" />
+      <module name="NanoFactoryGruppo7" />
+      <target name="pi@raspberrypi-gp5:22" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ThreadsVersion.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -117,9 +155,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UltrasonicRanger" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="UltrasonicRanger" />
+    <configuration name="ThreadsVersion.NanoFactory" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ThreadsVersion.NanoFactory" />
       <module name="NanoFactoryGruppo7" />
+      <target name="pi@raspberrypi-gp5:22" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ThreadsVersion.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -127,17 +172,18 @@
     <list>
       <item itemvalue="Application.NanoFactory" />
       <item itemvalue="Application.Raspberry" />
+      <item itemvalue="Application.NormalVersion.NanoFactory" />
+      <item itemvalue="Application.NanoFactoryRotatoryVersion" />
+      <item itemvalue="Application.Rangers" />
+      <item itemvalue="Application.ThreadsVersion.NanoFactory" />
       <item itemvalue="Application.LocalSimulation.NanoFactory" />
-      <item itemvalue="Application.PushTest" />
-      <item itemvalue="Application.Lot.InlufxLotTest" />
-      <item itemvalue="Application.UltrasonicRanger" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.NormalVersion.NanoFactory" />
+        <item itemvalue="Application.NanoFactoryRotatoryVersion" />
+        <item itemvalue="Application.ThreadsVersion.NanoFactory" />
         <item itemvalue="Application.LocalSimulation.NanoFactory" />
-        <item itemvalue="Application.PushTest" />
-        <item itemvalue="Application.Lot.InlufxLotTest" />
-        <item itemvalue="Application.UltrasonicRanger" />
       </list>
     </recent_temporary>
   </component>
@@ -162,7 +208,21 @@
       <workItem from="1686683020724" duration="3184000" />
       <workItem from="1686824709539" duration="3828000" />
       <workItem from="1686910956148" duration="13263000" />
-      <workItem from="1686928633478" duration="10072000" />
+      <workItem from="1686928633478" duration="10221000" />
+      <workItem from="1687115947669" duration="15000" />
+      <workItem from="1687256272408" duration="2962000" />
+      <workItem from="1687352033398" duration="6279000" />
+      <workItem from="1687371906659" duration="1413000" />
+      <workItem from="1689167910015" duration="63000" />
+      <workItem from="1689933008693" duration="4140000" />
+      <workItem from="1690028713079" duration="5110000" />
+      <workItem from="1690035674978" duration="100000" />
+      <workItem from="1690281210673" duration="1085000" />
+      <workItem from="1690282567436" duration="1086000" />
+      <workItem from="1690284004031" duration="885000" />
+      <workItem from="1691011365591" duration="596000" />
+      <workItem from="1692093111455" duration="5793000" />
+      <workItem from="1692173478580" duration="53000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1680786337716</created>
@@ -220,7 +280,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686921531885</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Consegna">
+      <created>1686952307160</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1686952307160</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -238,11 +305,14 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="First commit" />
     <MESSAGE value="Implementazione del codice" />
     <MESSAGE value="Test di influx cond InfluxLotTest" />
     <MESSAGE value="cambiamenti geenrali" />
-    <option name="LAST_COMMIT_MESSAGE" value="cambiamenti geenrali" />
+    <MESSAGE value="Consegna" />
+    <MESSAGE value="cambiamenti" />
+    <option name="LAST_COMMIT_MESSAGE" value="cambiamenti" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
