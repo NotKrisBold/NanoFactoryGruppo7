@@ -11,6 +11,7 @@ import org.iot.raspberry.grovepi.sensors.i2c.GroveRgbLcd;
 import org.iot.raspberry.grovepi.sensors.listener.GroveButtonListener;
 import org.iot.raspberry.grovepi.sensors.synch.SensorMonitor;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.logging.Level;
@@ -18,9 +19,6 @@ import java.util.logging.Logger;
 
 public class NanoFactory {
     public static final int LOT_SIZE = 6;
-
-    public static volatile boolean started = false;
-    public static boolean acquisitionOn = false;
 
     public static void main(String[] args) throws Exception {
         Logger.getLogger("GrovePi").setLevel(Level.SEVERE);
@@ -53,7 +51,7 @@ public class NanoFactory {
             }
         });
         GroveButton leftButton = new GroveButton(grovePi, 1);
-        entryButton.setButtonListener(new GroveButtonListener() {
+        leftButton.setButtonListener(new GroveButtonListener() {
             @Override
             public void onRelease() {
 
@@ -66,11 +64,18 @@ public class NanoFactory {
 
             @Override
             public void onClick() {
-                activeLots.add(new Lot(LOT_SIZE));
+                Lot lot = activeLots.peek();
+                try {
+                    exitLed.set(true);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                if (lot != null && !lot.done())
+                    lot.leftIncrement();
             }
         });
         GroveButton rightButton = new GroveButton(grovePi, 1);
-        entryButton.setButtonListener(new GroveButtonListener() {
+        rightButton.setButtonListener(new GroveButtonListener() {
             @Override
             public void onRelease() {
 
@@ -83,7 +88,14 @@ public class NanoFactory {
 
             @Override
             public void onClick() {
-                activeLots.add(new Lot(LOT_SIZE));
+                Lot lot = activeLots.peek();
+                try {
+                    exitLed.set(true);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                if (lot != null && !lot.done())
+                    lot.rightIncrement();
             }
         });
 
@@ -92,52 +104,21 @@ public class NanoFactory {
 
         lcd1.setRGB(255, 255, 255);
 
-        Lot currentLot = new Lot(LOT_SIZE);
-
-        Thread.sleep(1000);
-
         while (true) {
-            if(!started){
-                Lot lot = activeLots.poll();
-                if(lot != null) {
-                    currentLot = lot;
-                    acquisitionOn = true;
-                    started = true;
-                    entryLed.set(true);
-                }
-            }
-
-            if (acquisitionOn) {
-                if (leftMonitor.getValue() < 500) {
-                    lcd1.setText("left");
-                    lcd1.setRGB(0, 255, 0);
-                    exitLed.set(true);
-                    currentLot.leftIncrement();
-                }
-
-                if (rightMonitor.getValue() < 500) {
-                    lcd1.setText("right");
-                    lcd1.setRGB(255, 0, 0);
-                    exitLed.set(true);
-                    currentLot.rightIncrement();
-                }
-
-
+            Lot currentLot = activeLots.peek();
+            if (currentLot == null) {
+                entryLed.set(false);
+                lcd1.setText("No balls");
+            } else {
                 lcd1.setText("R: " + currentLot.getRightBalls() + "\nL: " + currentLot.getLeftBalls());
-
                 if (currentLot.done()) {
+                    activeLots.poll();
                     InfluxLotPoint.pushLotNormalVersion(currentLot);
-                    acquisitionOn = false;
-                    started = false;
                     entryLed.set(false);
                 }
-
-                Thread.sleep(5);
-                exitLed.set(false);
-                lcd1.setRGB(255, 255, 255);
             }
-
             Thread.sleep(5);
+            exitLed.set(false);
         }
     }
 }

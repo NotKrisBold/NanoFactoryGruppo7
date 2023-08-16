@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31f38e44-93b3-4d33-b08c-4729f4b5f47f" name="Changes" comment="cambiamenti">
-      <change afterPath="$PROJECT_DIR$/src/main/java/OnlyButtonsVersion/NanoFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/VecchieVersioni/NormalVersion/NanoFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/VecchieVersioni/ThreadsVersion/NanoFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/VecchieVersioni/ThreadsVersion/RangerWorker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/remote-targets.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/remote-targets.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Report/Progetto_Industry_4.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Report/Progetto_Industry_4.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Report/~$ogetto_Industry_4.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LocalSimulation/NanoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/VecchieVersioni/LocalSimulation/NanoFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NormalVersion/NanoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/NormalVersion/NanoFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/RotatoryVersion/NanoFactoryRotatoryVersion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/VecchieVersioni/RotatoryVersion/NanoFactoryRotatoryVersion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/InfluxLotPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/InfluxLotPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/Lot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/Lot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/OnlyButtonsVersion/NanoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/OnlyButtonsVersion/NanoFactory.java" afterDir="false" />
     </list>
     <list id="325e5314-a84a-4db5-a83f-16f5ac2bbdbd" name="Changes by jonat" comment="Changes by jonat" />
     <option name="SHOW_DIALOG" value="false" />
@@ -222,7 +211,7 @@
       <workItem from="1690284004031" duration="885000" />
       <workItem from="1691011365591" duration="596000" />
       <workItem from="1692093111455" duration="5793000" />
-      <workItem from="1692173478580" duration="53000" />
+      <workItem from="1692173478580" duration="1379000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1680786337716</created>
@@ -287,7 +276,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686952307160</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="cambiamenti">
+      <created>1692173862275</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1692173862275</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
