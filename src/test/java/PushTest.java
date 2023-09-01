@@ -9,7 +9,7 @@ import java.time.Instant;
 
 public class PushTest {
     private static final String token = "Q7S9CEST4vR9o9itqIa2SsAac_Ct3WXYEjeCyY_Zh7vYgQAP9QgxVRV-fQusNAmrGJmJuhDLK4OtQ1dlTzkmXQ==";
-    private static final String bucket = "NanoFactoryNV";
+    private static final String bucket = "NF";
     private static final String org = "NanoFactory";
     public static void main(String[] args) throws InterruptedException {
         InfluxDBClient client = InfluxDBClientFactory.create("http://169.254.10.236:8086", token.toCharArray());
@@ -24,7 +24,6 @@ public class PushTest {
             else
                 lot.leftIncrement();
             Thread.sleep(1000);
-            lot.end();
         }
         lot.setBalls(2);
 

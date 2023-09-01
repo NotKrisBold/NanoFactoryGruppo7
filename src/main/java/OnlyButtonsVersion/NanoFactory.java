@@ -33,7 +33,7 @@ public class NanoFactory {
         GroveLed exitLed = new GroveLed(grovePi, 8);
 
         //Buttons
-        GroveButton entryButton = new GroveButton(grovePi, 1);
+        GroveButton entryButton = new GroveButton(grovePi, 2);
         entryButton.setButtonListener(new GroveButtonListener() {
             @Override
             public void onRelease() {
@@ -48,9 +48,16 @@ public class NanoFactory {
             @Override
             public void onClick() {
                 activeLots.add(new Lot(LOT_SIZE));
+                try {
+                    entryLed.set(true);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
-        GroveButton leftButton = new GroveButton(grovePi, 1);
+        SensorMonitor<Boolean> entryMonitor = new SensorMonitor<>(entryButton, 10);
+
+        GroveButton leftButton = new GroveButton(grovePi, 3);
         leftButton.setButtonListener(new GroveButtonListener() {
             @Override
             public void onRelease() {
@@ -64,6 +71,7 @@ public class NanoFactory {
 
             @Override
             public void onClick() {
+                System.out.println("l");
                 Lot lot = activeLots.peek();
                 try {
                     exitLed.set(true);
@@ -74,7 +82,9 @@ public class NanoFactory {
                     lot.leftIncrement();
             }
         });
-        GroveButton rightButton = new GroveButton(grovePi, 1);
+        SensorMonitor<Boolean> leftMonitor = new SensorMonitor<>(leftButton, 10);
+
+        GroveButton rightButton = new GroveButton(grovePi, 6);
         rightButton.setButtonListener(new GroveButtonListener() {
             @Override
             public void onRelease() {
@@ -88,6 +98,7 @@ public class NanoFactory {
 
             @Override
             public void onClick() {
+                System.out.println("r");
                 Lot lot = activeLots.peek();
                 try {
                     exitLed.set(true);
@@ -98,11 +109,16 @@ public class NanoFactory {
                     lot.rightIncrement();
             }
         });
+        SensorMonitor<Boolean> rightMonitor = new SensorMonitor<>(rightButton, 10);
 
         // LCD
         GroveRgbLcd lcd1 = grovePi.getLCD();
 
         lcd1.setRGB(255, 255, 255);
+        entryMonitor.start();
+        leftMonitor.start();
+        rightMonitor.start();
+        Thread.sleep(1000);
 
         while (true) {
             Lot currentLot = activeLots.peek();
@@ -110,12 +126,12 @@ public class NanoFactory {
                 entryLed.set(false);
                 lcd1.setText("No balls");
             } else {
-                lcd1.setText("R: " + currentLot.getRightBalls() + "\nL: " + currentLot.getLeftBalls());
                 if (currentLot.done()) {
                     activeLots.poll();
                     InfluxLotPoint.pushLotNormalVersion(currentLot);
                     entryLed.set(false);
                 }
+                lcd1.setText("R: " + currentLot.getRightBalls() + "\nL: " + currentLot.getLeftBalls());
             }
             Thread.sleep(5);
             exitLed.set(false);

@@ -13,12 +13,11 @@ import java.time.ZonedDateTime;
 
 public class InfluxLotPoint {
     private static final String token = "Q7S9CEST4vR9o9itqIa2SsAac_Ct3WXYEjeCyY_Zh7vYgQAP9QgxVRV-fQusNAmrGJmJuhDLK4OtQ1dlTzkmXQ==";
+    private static final String bucket = "NF";
     private static final String org = "NanoFactory";
     private static final InfluxDBClient client = InfluxDBClientFactory.create("http://169.254.10.236:8086", token.toCharArray());
 
     public static void pushLotNormalVersion(Lot lot){
-        final String bucket = "NanoFactoryNV";
-
         WriteApiBlocking writeApi = client.getWriteApiBlocking();
 
         Point point = Point.measurement("Lot")
